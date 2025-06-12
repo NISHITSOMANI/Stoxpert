@@ -20,6 +20,9 @@ import json
 app = Flask(__name__)
 
 def create_candlestick_chart(df):
+    df['Date'] = pd.to_datetime(df['Date'])  # ensure it's datetime
+    df['Date'] = df['Date'].dt.strftime('%Y-%m-%d')  # convert to string (ISO format)
+
     fig = go.Figure(data=[go.Candlestick(
         x=df['Date'],
         open=df['Open'],
@@ -34,6 +37,7 @@ def create_candlestick_chart(df):
         xaxis_rangeslider_visible=False
     )
     return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
 from sklearn.metrics import mean_squared_error
 
 def train_lstm(csv_path, symbol, window_size=10, epochs=100):
