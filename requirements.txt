@@ -1,0 +1,9 @@
+Flask==2.3.2
+pandas
+numpy
+joblib
+plotly
+ta
+tensorflow
+scikit-learn
+gunicorn
