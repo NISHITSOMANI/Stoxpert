@@ -38,6 +38,7 @@ def create_candlestick_chart(df):
     )
     return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
+
 from sklearn.metrics import mean_squared_error
 
 def train_lstm(csv_path, symbol, window_size=10, epochs=100):
